@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Vault</title>
+</head>
+<body>
+
+<div align="center">
+    <p>Hello, <span th:text="${#authentication.getName()}"></span></p>
+
+    <p>Your current vault: </p>
+
+    <div th:if="${passwordSet.isEmpty()}" th:align="center">
+        <p> It seems like your password vault is empty. Would you like to add some passwords to it now? </p>
+
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <td>Website identifier</td>
+            <td>Website password</td>
+        </tr>
+        </thead>
+        <tr th:each="password:${passwordSet}">
+            <td th:text="${password.websiteIdentifier}"></td>
+            <td th:text="${password.password}"></td>
+        </tr>
+    </table>
+
+    <form th:action="@{/myvault/add}" method="post" th:object="${newPassword}">
+        <label>Website name</label>
+        <input type="text" th:field="*{websiteIdentifier}">
+        <label>Website password</label>
+        <input type="password" th:field="*{password}">
+        <button align="center" type="submit">Add to vault</button>
+
+    </form>
+
+</div>
+</body>
+</html>

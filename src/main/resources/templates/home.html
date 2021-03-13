@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<div align="center">
+    <p>Hello, <span th:text="${#authentication.getName()}"></span></p>
+    <a th:href="@{/myvault}">Go to vault</a>
+</div>
+</body>
+</html>
