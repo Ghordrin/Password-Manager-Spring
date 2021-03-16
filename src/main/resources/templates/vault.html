@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My Vault</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 
 <div th:insert="navbar"></div>
@@ -18,20 +19,26 @@
         <p> It seems like your password vault is empty. Would you like to add some passwords to it now? </p>
 
     </div>
-    <table>
+    <table class="table">
         <thead>
         <tr>
-            <td>Website identifier</td>
-            <td>Website password</td>
+            <th scope="col">#</th>
+            <th scope="col">Website identifier</th>
+            <th scope="col">Website password</th>
         </tr>
         </thead>
+        <tbody>
+
         <tr th:each="password:${passwordSet}">
+            <th scope="row">#</th>
             <td th:text="${password.websiteIdentifier}"></td>
             <td th:text="${password.password}"></td>
         </tr>
+        </tbody>
     </table>
-
-    <form th:action="@{/myvault/add}" method="post" th:object="${newPassword}">
+</div>
+<div>
+    <form th:action="@{/myvault/add}" method="post" th:object="${newPassword}" align="center">
         <label>Website name</label>
         <input type="text" th:field="*{websiteIdentifier}">
         <label>Website password</label>

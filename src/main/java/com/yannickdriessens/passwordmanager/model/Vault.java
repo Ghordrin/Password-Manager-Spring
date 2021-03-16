@@ -3,10 +3,11 @@ package com.yannickdriessens.passwordmanager.model;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class Vault {
+public class Vault implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
