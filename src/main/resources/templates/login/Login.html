@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <title>Login page</title>
 </head>
+<div th:insert="navbar" style="height: 5vh; width: 100%"></div>
 <body>
 
 <div id="form">
 
-    <div id="errors" th:if="${(param.error != null) and (param.error[0] == 'true')}">
+    <div class="alert alert-danger" th:if="${(param.error != null) and (param.error[0] == 'true')}" role="alert">
         Invalid username or password! Are you sure you're a member? 
     </div>
+
 
     <form name="f" th:action="@{/login}" method="post">
         <fieldset>
@@ -27,5 +29,6 @@
         </fieldset>
     </form>
 </div>
+<div th:insert="footer"></div>
 </body>
 </html>

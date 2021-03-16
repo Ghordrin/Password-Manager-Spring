@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 public class AccountController {
@@ -22,15 +23,18 @@ public class AccountController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserRepository userRepository;
+
 
     @GetMapping("/user/details")
-    public String getuserDetails(Authentication authentication, Model model, HttpSession session){
+    public String getuserDetails(Model model, HttpSession session, Principal principal){
+        session.setAttribute("user", userRepository.findByUsername(principal.getName()).get());
         User user = (User) session.getAttribute("user");
         Long vaultId = vaultRepository.findByUser(user).get().getVaultId();
         Long userId = user.getId();
         model.addAttribute("vaultId", vaultId);
         model.addAttribute("userId", userId);
-        model.addAttribute("userObj", authentication.getPrincipal());
         return "account/account_overview";
     }
 

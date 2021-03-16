@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
+
 
 <div id="form">
     <form name="f" th:action="@{/signup}" th:object="${user}" method="post">
+        <div class="alert alert-danger" role="alert">
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</span>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
+            <span th:text="${error}">Error text</span>
+        </div>
+
         <fieldset>
             <h2>Please fill out your details here: </h2>
-            <div id="errors">
-                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</span>
-                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
-                <span th:text="${error}">Error text</span>
-            </div>
             <label for="username">Username</label>
             <input type="text" th:field="*{username}" id="username" name="username"/>
             <label for="password">Password</label>
