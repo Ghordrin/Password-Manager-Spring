@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>My Vault</title>
 </head>
+
+<div th:insert="navbar"></div>
 <body>
 
 <div align="center">
@@ -35,9 +37,9 @@
         <label>Website password</label>
         <input type="password" th:field="*{password}">
         <button align="center" type="submit">Add to vault</button>
-
     </form>
 
 </div>
 </body>
+<div th:insert="footer"></div>
 </html>

@@ -1,13 +1,11 @@
-package com.yannickdriessens.passwordmanager.Controller;
+package com.yannickdriessens.passwordmanager.controller;
 
-import com.yannickdriessens.passwordmanager.Repository.PasswordRepository;
-import com.yannickdriessens.passwordmanager.Repository.UserRepository;
-import com.yannickdriessens.passwordmanager.Repository.VaultRepository;
+import com.yannickdriessens.passwordmanager.repository.PasswordRepository;
+import com.yannickdriessens.passwordmanager.repository.UserRepository;
+import com.yannickdriessens.passwordmanager.repository.VaultRepository;
 import com.yannickdriessens.passwordmanager.model.HashedPassword;
 import com.yannickdriessens.passwordmanager.model.User;
 import com.yannickdriessens.passwordmanager.model.Vault;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
-import org.jasypt.iv.RandomIvGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 
 @Controller
@@ -31,7 +30,8 @@ public class VaultController {
     UserRepository userRepository;
 
     @RequestMapping("/myvault")
-    public String GoToVault(HttpSession session){
+    public String GoToVault(HttpSession session, Principal principal){
+        session.setAttribute("user", userRepository.findByUsername(principal.getName()).get());
         User user = (User) session.getAttribute("user");
         vaultRepository.findByUser(user);
         return "vault";
@@ -63,7 +63,8 @@ public class VaultController {
     }
 
     @ModelAttribute
-    public void getPassWordList(Model model, HttpSession session){
+    public void getPassWordList(Model model, HttpSession session, Principal principal){
+        session.setAttribute("user", userRepository.findByUsername(principal.getName()).get());
         User user = (User) session.getAttribute("user");
         Vault vault = vaultRepository.findByUser(user).get();
         model.addAttribute("passwordSet", vault.getHashedPasswords() );

@@ -1,6 +1,6 @@
-package com.yannickdriessens.passwordmanager.Controller;
+package com.yannickdriessens.passwordmanager.controller;
 
-import com.yannickdriessens.passwordmanager.Repository.UserRepository;
+import com.yannickdriessens.passwordmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

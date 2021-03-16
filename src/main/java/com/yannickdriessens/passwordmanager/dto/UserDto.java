@@ -1,4 +1,4 @@
-package com.yannickdriessens.passwordmanager.DTOs;
+package com.yannickdriessens.passwordmanager.dto;
 
 
 import javax.validation.constraints.NotEmpty;

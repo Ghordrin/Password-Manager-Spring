@@ -1,4 +1,4 @@
-package com.yannickdriessens.passwordmanager.Repository;
+package com.yannickdriessens.passwordmanager.repository;
 
 import com.yannickdriessens.passwordmanager.model.User;
 import com.yannickdriessens.passwordmanager.model.Vault;

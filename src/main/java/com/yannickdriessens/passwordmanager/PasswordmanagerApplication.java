@@ -1,6 +1,6 @@
 package com.yannickdriessens.passwordmanager;
 
-import com.yannickdriessens.passwordmanager.Repository.UserRepository;
+import com.yannickdriessens.passwordmanager.repository.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;

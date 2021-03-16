@@ -1,7 +1,5 @@
 package com.yannickdriessens.passwordmanager.model;
 
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -27,7 +25,6 @@ public class HashedPassword implements Serializable {
     @NotNull
     @Size(min = 3, max = 20, message = "Password must be between 3 - 20 characters")
     private String password;
-
 
 
     public HashedPassword() {

@@ -1,7 +1,7 @@
 package com.yannickdriessens.passwordmanager.service;
 
-import com.yannickdriessens.passwordmanager.Repository.UserRepository;
-import com.yannickdriessens.passwordmanager.Repository.VaultRepository;
+import com.yannickdriessens.passwordmanager.repository.UserRepository;
+import com.yannickdriessens.passwordmanager.repository.VaultRepository;
 import com.yannickdriessens.passwordmanager.exceptions.UsernameAlreadyExistsException;
 import com.yannickdriessens.passwordmanager.model.User;
 import com.yannickdriessens.passwordmanager.model.Vault;
@@ -37,6 +37,10 @@ public class UserService {
             vaultRepository.save(vault);
             return user;
     }
+
+
+
+
 
     private boolean userNameExists(String username){
         return userRepository.findByUsername(username).isPresent();

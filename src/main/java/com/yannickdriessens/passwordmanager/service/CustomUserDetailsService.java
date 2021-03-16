@@ -1,6 +1,6 @@
 package com.yannickdriessens.passwordmanager.service;
 
-import com.yannickdriessens.passwordmanager.Repository.UserRepository;
+import com.yannickdriessens.passwordmanager.repository.UserRepository;
 import com.yannickdriessens.passwordmanager.model.User;
 import com.yannickdriessens.passwordmanager.security.CustomUserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
