@@ -1,11 +1,18 @@
 package com.yannickdriessens.passwordmanager.model;
 
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 @Entity
 public class HashedPassword implements Serializable {
@@ -54,11 +61,11 @@ public class HashedPassword implements Serializable {
         this.websiteIdentifier = websiteIdentifier;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword() throws Exception {
+        return (password);
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = (password);
     }
 }

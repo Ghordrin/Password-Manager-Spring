@@ -3,6 +3,7 @@ package com.yannickdriessens.passwordmanager.model;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 public class User implements Serializable {
@@ -17,10 +18,11 @@ public class User implements Serializable {
     @Size(min = 6, message = "Password has to be at least 6 characters!")
     private String password;
 
-
     private int enabled;
 
     private String role;
+
+    private LocalDateTime joinTime = LocalDateTime.now();
 
     @OneToOne(cascade = CascadeType.ALL)
     Vault vault;
@@ -74,5 +76,13 @@ public class User implements Serializable {
 
     public void setVault(Vault vault) {
         this.vault = vault;
+    }
+
+    public LocalDateTime getJoinTime() {
+        return joinTime;
+    }
+
+    public void setJoinTime(LocalDateTime joinTime) {
+        this.joinTime = joinTime;
     }
 }

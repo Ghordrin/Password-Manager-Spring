@@ -20,8 +20,6 @@ public class AccountController {
     @Autowired
     VaultRepository vaultRepository;
 
-    @Autowired
-    UserService userService;
 
     @Autowired
     UserRepository userRepository;
@@ -35,6 +33,7 @@ public class AccountController {
         Long userId = user.getId();
         model.addAttribute("vaultId", vaultId);
         model.addAttribute("userId", userId);
+        model.addAttribute("userJoinTime", user.getJoinTime());
         return "account/account_overview";
     }
 

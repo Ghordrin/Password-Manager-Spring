@@ -12,15 +12,17 @@
 </head>
 
 <div th:insert="navbar" style="height: 5vh; width: 100%"></div>
-<body>
-
-<div class="inner-cover">
-    <h1 class="cover-heading">Password Manager</h1>
-    <p class="lead">This is a password manager. The password manager stores users details securely in a database by using a secure hashing algorithm to store your details</p>
-    <p class="lead">
-        <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-</div>
-
+<body style="height: 90vh">
+<section class="h-100 d-flex justify-content-center align-items-center">
+    <div class ="col-sm-12 my-auto">
+        <div class="card card-block w-50 mx-auto">
+                <h1 class="cover-heading">Password Manager</h1>
+                <p class="lead">This is a password manager. The password manager stores users details securely in a database by using a secure hashing algorithm to store your details</p>
+                <p class="lead">
+                    <a th:href="@{/login}" class="btn btn-lg btn-secondary">Learn more</a>
+        </div>
+    </div>
+</section>
 </body>
 <div th:insert="footer"></div>
 </html>

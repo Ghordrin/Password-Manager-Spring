@@ -14,14 +14,15 @@
 <div th:insert="navbar" style="height: 5vh; width: 100%"></div>
 <body>
 
-<div class="inner-cover">
+<div class="inner-cover" align="center">
     <h1>Account details: </h1>
-    <table class="table">
+    <table class="table-responsive">
         <thead>
         <tr>
         <th scope="col">User ID: </th>
         <th scope="col">Vault ID: </th>
         <th scope="col">Username: </th>
+        <th scope="col">Joined at: </th>
         <th scope="col">Account expired </th>
         </tr>
         </thead>
@@ -31,6 +32,7 @@
             <td th:text="${userId}"></td>
             <td th:text="${vaultId}"></td>
             <td th:text="${#authentication.getName()}"></td>
+            <td th:text="${userJoinTime}"></td>
             <td th:text="false"></td>
         </tr>
         </tbody>
