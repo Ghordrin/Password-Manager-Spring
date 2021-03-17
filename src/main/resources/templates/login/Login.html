@@ -6,8 +6,9 @@
     <title>Login page</title>
 </head>
 <div th:insert="navbar" style="height: 5vh; width: 100%"></div>
-<body>
+<body style="height: 90vh">
 
+<section class="h-45 d-flex justify-content-center align-items-center">
 <div id="form">
 
     <div class="alert alert-danger" th:if="${(param.error != null) and (param.error[0] == 'true')}" role="alert">
@@ -29,6 +30,7 @@
         </fieldset>
     </form>
 </div>
+</section>
 <div th:insert="footer"></div>
 </body>
 </html>
