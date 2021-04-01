@@ -1,6 +1,9 @@
 package com.yannickdriessens.passwordmanager.model;
 
 
+import com.yannickdriessens.passwordmanager.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
@@ -13,6 +16,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 @Entity
 public class HashedPassword implements Serializable {
@@ -30,7 +34,7 @@ public class HashedPassword implements Serializable {
 
     @NotEmpty
     @NotNull
-    @Size(min = 3, max = 20, message = "Password must be between 3 - 20 characters")
+    @Size(min = 5, message = "Password must be minimum 5 characters!")
     private String password;
 
 
@@ -62,10 +66,11 @@ public class HashedPassword implements Serializable {
     }
 
     public String getPassword() throws Exception {
-        return (password);
+        return password;
     }
 
-    public void setPassword(String password) {
-        this.password = (password);
+    public void setPassword(String password) throws InvalidKeySpecException, NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException, BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
+        this.password = password;
     }
+
 }
